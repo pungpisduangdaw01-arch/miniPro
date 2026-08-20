@@ -2,16 +2,27 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-st.set_page_config(page_title="ระบบวิเคราะห์ความเสี่ยงการออกกลางคันของนักศึกษา", layout="wide")
+st.set_page_config(page_title="ระบบวิเคราะห์การออกกลางคันของนักศึกษา", layout="wide")
+
+# --- ส่วนที่เพิ่ม: ข้อมูลผู้พัฒนาตามเกณฑ์ข้อกำหนด ---
+st.sidebar.image("https://via.placeholder.com/150", width=150) # เปลี่ยนเป็น URL รูปของคุณ หรือใช้ st.image("profile.jpg")
+st.sidebar.title("👨‍💻 ข้อมูลผู้พัฒนา")
+st.sidebar.write("**ชื่อ-นามสกุล:** นายกิตติศักดิ์ ใจดี") # แก้ไขเป็นชื่อของคุณ
+st.sidebar.write("**รหัสนักศึกษา:** 66xxxxxxx")          # แก้ไขเป็นรหัสของคุณ
+st.sidebar.write("**หมู่เรียน:** 66/xx")                 # แก้ไขเป็นหมู่เรียนของคุณ
+st.sidebar.markdown("---")
 
 st.title("🎓 ระบบวิเคราะห์ความเสี่ยงการออกกลางคัน (Student Dropout Prediction)")
-st.write("กรอกข้อมูลนักศึกษาเพื่อประเมินความเสี่ยง")
+st.write("โปรแกรมวิเคราะห์ปัจจัยเสี่ยงในการออกกลางคันของนักศึกษาด้วย Machine Learning")
 
 @st.cache_resource
 def load_model():
     return joblib.load('dropout_model.pkl')
 
-model = load_model()
+try:
+    model = load_model()
+except Exception as e:
+    st.error(f"ไม่สามารถโหลดโมเดลได้: {e}")
 
 col1, col2, col3 = st.columns(3)
 
@@ -20,7 +31,7 @@ with col1:
     age = st.number_input("อายุ", min_value=15, max_value=60, value=20)
     gender = st.selectbox("เพศ", ["Male", "Female"])
     department = st.selectbox("คณะ/สาขา", ["Engineering", "Arts", "Business", "Science", "Other"])
-    semester = st.selectbox("ชั้นปี/ภาคการศึกษา", ["Year 1", "Year 2", "Year 3", "Year 4"])
+    semester = st.selectbox("ชั้นปี", ["Year 1", "Year 2", "Year 3", "Year 4"])
     parental_edu = st.selectbox("การศึกษาผู้ปกครอง", ["High School", "Bachelor", "Master", "PhD"])
 
 with col2:
@@ -51,7 +62,7 @@ if st.button("🔍 วิเคราะห์ความเสี่ยง"):
         'Semester_GPA': semester_gpa, 'CGPA': cgpa, 'Semester': semester,
         'Department': department, 'Parental_Education': parental_edu
     }])
-
+    
     pred = model.predict(input_data)[0]
     prob = model.predict_proba(input_data)[0][1] * 100
 
