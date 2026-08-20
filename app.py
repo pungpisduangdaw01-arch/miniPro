@@ -4,8 +4,17 @@ import joblib
 
 st.set_page_config(page_title="ระบบวิเคราะห์การออกกลางคันของนักศึกษา", layout="wide")
 
-# --- ส่วนที่เพิ่ม: ข้อมูลผู้พัฒนาตามเกณฑ์ข้อกำหนด ---
-st.sidebar.image("aa.jpg", width=150) # เปลี่ยนเป็น URL รูปของคุณ หรือใช้ st.image("profile.jpg")
+import streamlit as st
+import os
+
+# เช็กตำแหน่งไฟล์รูปในโฟลเดอร์ img
+image_path = "img/aa.jpg"
+
+if os.path.exists(image_path):
+    st.sidebar.image(image_path, width=150)
+else:
+    # หากหาไฟล์ไม่เจอ ให้แสดงรูปภาพสำรองชั่วคราว
+    st.sidebar.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=150) # เปลี่ยนเป็น URL รูปของคุณ หรือใช้ st.image("profile.jpg")
 st.sidebar.title("👨‍💻 ข้อมูลผู้พัฒนา")
 st.sidebar.write("**ชื่อ-นามสกุล:** นาย ชิษณุพงศ์ เกตุพูนทอง") 
 st.sidebar.write("**รหัสนักศึกษา:** 664245004")          
