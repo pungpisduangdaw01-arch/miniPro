@@ -5,11 +5,11 @@ import joblib
 st.set_page_config(page_title="ระบบวิเคราะห์การออกกลางคันของนักศึกษา", layout="wide")
 
 # --- ส่วนที่เพิ่ม: ข้อมูลผู้พัฒนาตามเกณฑ์ข้อกำหนด ---
-st.sidebar.image("https://via.placeholder.com/150", width=150) # เปลี่ยนเป็น URL รูปของคุณ หรือใช้ st.image("profile.jpg")
+st.sidebar.image("aa.jpg", width=150) # เปลี่ยนเป็น URL รูปของคุณ หรือใช้ st.image("profile.jpg")
 st.sidebar.title("👨‍💻 ข้อมูลผู้พัฒนา")
-st.sidebar.write("**ชื่อ-นามสกุล:** นายกิตติศักดิ์ ใจดี") # แก้ไขเป็นชื่อของคุณ
-st.sidebar.write("**รหัสนักศึกษา:** 66xxxxxxx")          # แก้ไขเป็นรหัสของคุณ
-st.sidebar.write("**หมู่เรียน:** 66/xx")                 # แก้ไขเป็นหมู่เรียนของคุณ
+st.sidebar.write("**ชื่อ-นามสกุล:** นาย ชิษณุพงศ์ เกตุพูนทอง") 
+st.sidebar.write("**รหัสนักศึกษา:** 664245004")          
+st.sidebar.write("**หมู่เรียน:** 66/43")                 
 st.sidebar.markdown("---")
 
 st.title("🎓 ระบบวิเคราะห์ความเสี่ยงการออกกลางคัน (Student Dropout Prediction)")
