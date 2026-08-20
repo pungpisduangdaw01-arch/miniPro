@@ -16,7 +16,7 @@ else:
     # หากหาไฟล์ไม่เจอ ให้แสดงรูปภาพสำรองชั่วคราว
     st.sidebar.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=150) # เปลี่ยนเป็น URL รูปของคุณ หรือใช้ st.image("profile.jpg")
 st.sidebar.title("👨‍💻 ข้อมูลผู้พัฒนา")
-st.sidebar.write("**ชื่อ-นามสกุล:/nนาย ชิษณุพงศ์ เกตุพูนทอง") 
+st.sidebar.write("ชื่อ-นามสกุล:นาย ชิษณุพงศ์ เกตุพูนทอง") 
 st.sidebar.write("**รหัสนักศึกษา:** 664245004")          
 st.sidebar.write("**หมู่เรียน:** 66/43")                 
 st.sidebar.markdown("---")
